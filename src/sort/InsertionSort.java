@@ -2,27 +2,22 @@ package sort;
 
 /**
  * @author Sanjay 
- * Best Case : O(n) => already sorted
- * Avg Case  : O(n^2)
+ * Best Case : O(n^2) 
+ * Avg Case :  O(n^2) 
  * Worst Case: O(n^2)
  */
-public class BubbleSort {
-	boolean isSwapped = false;
+public class InsertionSort {
 
 	void sort(int[] arr) {
 		int n = arr.length;
-		for (int i = 0; i < n - 1; i++) {
-			for (int j = 0; j < n - i - 1; j++) {
-				if (arr[j] > arr[j + 1]) {
-					int temp = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = temp;
-					isSwapped = true;
-				}
+		for (int i = 1; i < n; i++) {
+			int value = arr[i];
+			int index = i - 1;
+			while (index >= 0 && value < arr[index]) {
+				arr[index + 1] = arr[index];
+				--index;
 			}
-			if (!isSwapped) {
-				break;
-			}
+			arr[index + 1] = value;
 		}
 	}
 
@@ -35,7 +30,7 @@ public class BubbleSort {
 	}
 
 	public static void main(String[] args) {
-		BubbleSort obj = new BubbleSort();
+		InsertionSort obj = new InsertionSort();
 		int[] arr = { 4, 5, 2, 1, 7, 8, 6, 9, 3, 0 };
 		System.out.println("Array: ");
 		obj.printArray(arr);
